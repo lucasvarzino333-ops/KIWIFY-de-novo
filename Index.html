@@ -16,7 +16,7 @@
         body {
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
-            background: linear-gradient(135deg, #0c0c1e 0%, #1a0d2e 50%, #16213e 100%);
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a0033 50%, #0f0f23 100%);
             color: white;
             min-height: 100vh;
         }
@@ -24,7 +24,7 @@
         /* Hero Section */
         .hero {
             background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
-                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%230c0c1e" width="1200" height="600"/><circle fill="%238B5CF6" opacity="0.3" cx="200" cy="150" r="100"/><circle fill="%233B82F6" opacity="0.4" cx="800" cy="300" r="150"/><circle fill="%23EC4899" opacity="0.2" cx="1000" cy="100" r="80"/><path fill="%23F59E0B" opacity="0.1" d="M0 500Q300 400 600 500T1200 500V600H0Z"/></svg>');
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><radialGradient id="a" cx="50%" cy="50%"><stop offset="0%" stop-color="%23ff00ff"/><stop offset="50%" stop-color="%2300ffff"/><stop offset="100%" stop-color="%23purple"/></radialGradient></defs><rect width="1200" height="600" fill="url(%23a)"/><circle cx="200" cy="150" r="80" fill="%23ff00ff" opacity="0.3"/><circle cx="1000" cy="400" r="120" fill="%2300ffff" opacity="0.2"/><circle cx="800" cy="100" r="60" fill="%23ffff00" opacity="0.4"/></svg>');
             background-size: cover;
             background-position: center;
             height: 100vh;
@@ -43,73 +43,64 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 30% 20%, rgba(139, 92, 246, 0.3) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 80%, rgba(59, 130, 246, 0.3) 0%, transparent 50%);
+            background: linear-gradient(45deg, #ff00ff, #00ffff, #ff00ff);
+            opacity: 0.1;
             animation: glow 3s ease-in-out infinite alternate;
         }
 
         @keyframes glow {
-            0% { opacity: 0.7; }
-            100% { opacity: 1; }
+            0% { opacity: 0.1; }
+            100% { opacity: 0.3; }
         }
 
         .hero h1 {
             font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 800;
             margin-bottom: 1rem;
-            background: linear-gradient(45deg, #8B5CF6, #3B82F6, #EC4899);
+            background: linear-gradient(45deg, #fff, #ff00ff, #00ffff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
-            animation: slideIn 1s ease-out;
+            text-shadow: 0 0 30px rgba(255,0,255,0.5);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         .hero p {
             font-size: clamp(1.1rem, 2.5vw, 1.5rem);
             margin-bottom: 2rem;
             opacity: 0.9;
-            animation: slideIn 1s ease-out 0.2s both;
         }
 
-        .btn-primary {
-            background: linear-gradient(45deg, #8B5CF6, #3B82F6);
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
             color: white;
             padding: 1.2rem 3rem;
             font-size: clamp(1rem, 2vw, 1.2rem);
             font-weight: 700;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
             text-decoration: none;
-            display: inline-block;
-            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.4);
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(255,0,255,0.4);
             transition: all 0.3s ease;
-            animation: pulse 2s infinite;
+            animation: bounce 2s infinite;
             position: relative;
             overflow: hidden;
         }
 
-        .btn-primary:hover {
+        .cta-button:hover {
             transform: translateY(-5px);
-            box-shadow: 0 25px 50px rgba(139, 92, 246, 0.6);
+            box-shadow: 0 20px 40px rgba(255,0,255,0.6);
         }
 
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.7); }
-            70% { box-shadow: 0 0 0 20px rgba(139, 92, 246, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0); }
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
         }
 
         /* Products Section */
@@ -123,7 +114,7 @@
             text-align: center;
             font-size: clamp(2rem, 4vw, 3rem);
             margin-bottom: 4rem;
-            background: linear-gradient(45deg, #8B5CF6, #3B82F6);
+            background: linear-gradient(45deg, #fff, #ff00ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -132,17 +123,17 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
+            margin-bottom: 4rem;
         }
 
         .product-card {
             background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(20px);
+            backdrop-filter: blur(10px);
             border-radius: 20px;
-            padding: 2.5rem;
+            padding: 2rem;
             text-align: center;
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            transition: all 0.4s ease;
+            border: 1px solid rgba(255,0,255,0.2);
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
@@ -154,8 +145,8 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.2), transparent);
-            transition: 0.6s;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
         }
 
         .product-card:hover::before {
@@ -163,15 +154,15 @@
         }
 
         .product-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 30px 60px rgba(139, 92, 246, 0.4);
-            border-color: #8B5CF6;
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,255,255,0.3);
+            border-color: #00ffff;
         }
 
         .product-icon {
             font-size: 4rem;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(45deg, #8B5CF6, #3B82F6);
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -193,7 +184,7 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             max-width: 1200px;
-            margin: 3rem auto 0;
+            margin: 0 auto 4rem;
         }
 
         .proof-item {
@@ -201,26 +192,36 @@
             padding: 2rem;
             background: rgba(255,255,255,0.05);
             border-radius: 15px;
-            border: 1px solid rgba(139, 92, 246, 0.3);
+            border: 1px solid rgba(255,0,255,0.2);
         }
 
-        .proof-item i {
-            font-size: 3rem;
-            color: #8B5CF6;
-            margin-bottom: 1rem;
+        .proof-image {
+            width: 100%;
+            max-width: 250px;
+            height: 150px;
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
+            border-radius: 10px;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            position: relative;
+            overflow: hidden;
         }
 
-        .proof-item h4 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: #fff;
+        .proof-image::after {
+            content: '💰 R$2.847,30';
+            font-weight: bold;
+            font-size: 1.1rem;
         }
 
         /* Urgency Section */
         .urgency {
             padding: 4rem 2rem;
             text-align: center;
-            background: linear-gradient(135deg, #1a0d2e, #16213e);
+            background: linear-gradient(135deg, #ff0000, #ff4444);
+            margin: 3rem 0;
         }
 
         .countdown {
@@ -233,13 +234,10 @@
         }
 
         .countdown span {
-            background: linear-gradient(45deg, #8B5CF6, #EC4899);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            min-width: 80px;
-            padding: 1rem;
+            background: rgba(255,255,255,0.2);
+            padding: 1rem 1.5rem;
             border-radius: 10px;
-            background: rgba(139, 92, 246, 0.2);
+            min-width: 80px;
         }
 
         /* Final CTA */
@@ -248,12 +246,10 @@
             text-align: center;
         }
 
-        .final-cta h2 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, #8B5CF6, #3B82F6, #EC4899);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .final-button {
+            font-size: clamp(1.2rem, 3vw, 1.5rem) !important;
+            padding: 1.5rem 4rem !important;
+            margin-top: 2rem;
         }
 
         /* Responsive */
@@ -262,22 +258,21 @@
                 grid-template-columns: 1fr;
             }
             
-            .countdown {
-                flex-direction: column;
-                align-items: center;
-                font-size: 1.5rem;
+            .proof-grid {
+                grid-template-columns: 1fr;
             }
             
-            .hero {
-                padding: 0 1rem;
+            .countdown {
+                flex-direction: column;
+                gap: 0.5rem;
             }
         }
 
         /* Scroll animations */
         .fade-in {
             opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
         }
 
         .fade-in.visible {
@@ -288,21 +283,23 @@
 </head>
 <body>
     <!-- Hero Section -->
-    <section class="hero">
-        <h1>💰 Comece a ganhar dinheiro online ainda hoje com a Kiwify</h1>
+    <section class="hero fade-in">
+        <h1>💸 Comece a ganhar dinheiro online ainda hoje com a Kiwify</h1>
         <p>Veja como pessoas comuns estão faturando todos os dias</p>
-        <a href="#products" class="btn-primary">💸 QUERO COMEÇAR AGORA</a>
+        <a href="https://pay.kiwify.com.br/n0xqKa9?afid=LeOfZQhQ" class="cta-button">
+            💸 QUERO COMEÇAR AGORA
+        </a>
     </section>
 
     <!-- Products Section -->
-    <section id="products" class="products fade-in">
-        <h2 class="section-title">🚀 Produtos que VAO transformar sua vida financeira</h2>
+    <section class="products">
+        <h2 class="section-title fade-in">🚀 Os Melhores Produtos Kiwify</h2>
         <div class="products-grid">
             <div class="product-card fade-in">
                 <div class="product-icon">🎯</div>
                 <h3>Como fazer a primeira venda</h3>
                 <p>Aprenda o passo a passo do zero até sua primeira venda</p>
-                <a href="https://pay.kiwify.com.br/n0xqKa9?afid=LeOfZQhQ" class="btn-primary" target="_blank">
+                <a href="https://pay.kiwify.com.br/n0xqKa9?afid=LeOfZQhQ" class="cta-button">
                     🔥 Começar agora
                 </a>
             </div>
@@ -310,7 +307,7 @@
                 <div class="product-icon">⚡</div>
                 <h3>Desafio primeira venda automática em até 7 dias</h3>
                 <p>Método validado para vender no automático</p>
-                <a href="https://pay.kiwify.com.br/mifB5zq?afid=HsJAho5C" class="btn-primary" target="_blank">
+                <a href="https://pay.kiwify.com.br/mifB5zq?afid=HsJAho5C" class="cta-button">
                     🚀 Quero vender automático
                 </a>
             </div>
@@ -318,57 +315,57 @@
                 <div class="product-icon">📊</div>
                 <h3>Estrutura de vendas na Kiwify</h3>
                 <p>Monte uma máquina de vendas profissional</p>
-                <a href="https://pay.kiwify.com.br/vuRmYHv?afid=O2VyuNPj" class="btn-primary" target="_blank">
+                <a href="https://pay.kiwify.com.br/vuRmYHv?afid=O2VyuNPj" class="cta-button">
                     📈 Criar estrutura agora
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Proof Section -->
-    <section class="proof fade-in">
-        <h2 class="section-title" style="margin-bottom: 2rem;">✅ Resultados REAIS de alunos</h2>
+    <!-- Proof Social -->
+    <section class="proof">
+        <h2 class="section-title" style="margin-bottom: 3rem;">✅ Resultados REAIS dos alunos</h2>
         <div class="proof-grid">
             <div class="proof-item fade-in">
-                <i class="fas fa-trophy"></i>
-                <h4>"Primeira venda em 2 dias!"</h4>
-                <p>R$247 na primeira semana</p>
+                <div class="proof-image">📱 Notificação Kiwify</div>
+                <h3>Primeira venda em 2 dias!</h3>
+                <p>"Nunca imaginei que seria tão fácil!"</p>
             </div>
             <div class="proof-item fade-in">
-                <i class="fas fa-chart-line"></i>
-                <h4>"Já faturei mais de R$1.000"</h4>
-                <p>Trabalhando apenas 2h por dia</p>
+                <div class="proof-image">💰 Extrato de vendas</div>
+                <h3>Já faturei mais de R$1.000</h3>
+                <p>"Primeira semana e já deu resultado!"</p>
             </div>
             <div class="proof-item fade-in">
-                <i class="fas fa-star"></i>
-                <h4>"Funciona de verdade!"</h4>
-                <p>Melhor investimento da minha vida</p>
+                <div class="proof-image">🏆 Ranking Kiwify</div>
+                <h3>Funciona de verdade!</h3>
+                <p>"Método comprovado que entrega"</p>
             </div>
             <div class="proof-item fade-in">
-                <i class="fas fa-fire"></i>
-                <h4>"R$5.247 em 30 dias"</h4>
-                <p>Do zero ao faturamento</p>
+                <div class="proof-image">📈 Gráfico de vendas</div>
+                <h3>R$5.247 em 15 dias</h3>
+                <p>"Minha melhor decisão do ano!"</p>
             </div>
             <div class="proof-item fade-in">
-                <i class="fas fa-rocket"></i>
-                <h4>"Sistema no automático"</h4>
-                <p>Ganho enquanto durmo</p>
+                <div class="proof-image">⭐ Depoimento</div>
+                <h3>100% Recomendo!</h3>
+                <p>"Transformou minha vida financeira"</p>
             </div>
             <div class="proof-item fade-in">
-                <i class="fas fa-heart"></i>
-                <h4>"Mudou minha vida!"</h4>
-                <p>Liberdade financeira real</p>
+                <div class="proof-image">🔥 Vendas automáticas</div>
+                <h3>27 vendas no piloto automático</h3>
+                <p>"Agora vendo enquanto durmo!"</p>
             </div>
         </div>
     </section>
 
     <!-- Urgency Section -->
-    <section class="urgency fade-in">
-        <h2 style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem;">
+    <section class="urgency">
+        <h2 style="font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem;">
             ⚠️ ATENÇÃO: Acesso pode sair do ar a qualquer momento!
         </h2>
-        <p style="font-size: 1.3rem; margin-bottom: 2rem; opacity: 0.9;">
-            Quanto mais você demora, mais dinheiro deixa na mesa...
+        <p style="font-size: 1.3rem; margin-bottom: 2rem;">
+            Quanto mais você demora, mais dinheiro deixa na mesa 💸
         </p>
         <div class="countdown" id="countdown">
             <span><span id="days">02</span>D</span>
@@ -376,38 +373,40 @@
             <span><span id="minutes">37</span>M</span>
             <span><span id="seconds">19</span>S</span>
         </div>
+        <a href="https://pay.kiwify.com.br/n0xqKa9?afid=LeOfZQhQ" class="cta-button" style="background: linear-gradient(45deg, #00ff00, #ffff00);">
+            ⏰ NÃO PERCA ESSA OPORTUNIDADE!
+        </a>
     </section>
 
     <!-- Final CTA -->
-    <section class="final-cta fade-in">
-        <h2>Sua virada começa agora</h2>
-        <p style="font-size: 1.3rem; margin-bottom: 2rem; opacity: 0.9;">Escolha um produto e comece a faturar HOJE!</p>
-        <a href="#products" class="btn-primary" style="font-size: 1.3rem; padding: 1.5rem 4rem;">
-            💸 ACESSAR AGORA E GANHAR DINHEIRO
+    <section class="final-cta">
+        <h2 style="font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 1rem;">
+            Sua virada começa agora
+        </h2>
+        <p style="font-size: 1.3rem; opacity: 0.9; margin-bottom: 2rem;">
+            Clique e transforme sua vida financeira HOJE!
+        </p>
+        <a href="https://pay.kiwify.com.br/n0xqKa9?afid=LeOfZQhQ" class="cta-button final-button">
+            💸 ACESSAR AGORA E COMEÇAR A FATURAR
         </a>
     </section>
 
     <script>
-        // Countdown Timer
+        // Countdown Timer (fake)
         function updateCountdown() {
             const now = new Date().getTime();
-            const future = now + (2 * 24 * 60 * 60 * 1000) + (14 * 60 * 60 * 1000) + (37 * 60 * 1000) + (19 * 1000);
+            const future = now + (2 * 24 * 60 * 60 * 1000) + Math.random() * 24 * 60 * 60 * 1000;
+            const diff = future - now;
             
-            const distance = future - now;
-            
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
             document.getElementById('days').textContent = days.toString().padStart(2, '0');
             document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
             document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
             document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-            
-            if (distance < 0) {
-                document.getElementById('countdown').innerHTML = '<span style="color: #EC4899; font-size: 2rem;">⏰ OFERTA ENCERRADA!</span>';
-            }
         }
 
         setInterval(updateCountdown, 1000);
@@ -426,19 +425,15 @@
             observer.observe(el);
         });
 
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+        // Button pulse effect
+        setInterval(() => {
+            document.querySelectorAll('.cta-button').forEach(btn => {
+                btn.style.boxShadow = '0 0 30px rgba(255,0,255,0.8)';
+                setTimeout(() => {
+                    btn.style.boxShadow = '0 10px 30px rgba(255,0,255,0.4)';
+                }, 500);
             });
-        });
+        }, 3000);
     </script>
 </body>
 </html>
